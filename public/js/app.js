@@ -151,14 +151,32 @@ function signUp() {
 }
 
 function logIn() {
-    let email = prompt("Enter your Email:").trim().toLowerCase();
+    let email = prompt("Enter your email:").trim().toLowerCase();
     let user = users.find(u => u.email === email);
-    if (!user) { alert("Email not found!"); return; }
 
-    let password = prompt("Enter password:").trim();
-    if (user.password !== password) { alert("Wrong password!"); return; }
+    if (!user) {
+        alert("Email not found!");
+        return;
+    }
 
-    alert(`Welcome ${user.name}! Lbalance dyalek: ${user.balance} dirhams`);
+    let password = prompt("Enter password:");
+    if (user.password !== password) {
+        alert("Wrong password!");
+        return;
+    }
+
+    if (user.loan > 0) {
+        let reduction = user.loan * 0.1;
+        user.loan -= reduction;
+        user.balance -= reduction;
+        }
+
+    if (user.investment > 0 && user.investment < user.investment * 1.2) {
+        let profit = user.investment * 0.2;
+        user.balance += profit;
+    }
+
+    alert(`Welcome ${user.name}! Balance: ${user.balance}`);
     menuUser(user);
 }
 function menuUser(user) {
