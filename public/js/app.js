@@ -80,20 +80,16 @@
 
 //todo:--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-let account = {
-    username: null,
-    password: null
-};
-// ha7na sayebna l objet li fih ghaydar kolchi wrah dik null dernaha hint mba9i mafihom walo
-function signUp() {
-    if (account.username !== null) {
-//kantchekiw wach dek l account deja kayn wla la ...
-    console.log("An account already exists. Please log in.");
-//hna kanhgolo lih rah deja kayn l account ye3ni dir tesjil dokhol w sf 
-    return;
-}
-}
-const username = prompt("create a username: ");
-const password = prompt ("create a password: ");
-//hado homa joj prmptat li kaytel3o lmonsieur bach ycree l account
+let users = []; // array khawi bach nstokiw fih lusers
 
+function Bank() {
+    while (true) {
+        let choice = prompt("What do you want ? : sign up , log in , or exit !! ").toLowerCase();
+        if (choice === "exit") break;
+
+        if (choice === "sign up") signUp();
+        else if (choice === "log in") logIn();
+        else alert("wrooooooooong");
+
+    }
+}
