@@ -104,22 +104,52 @@ function Bank() {
     }
 }
 function signUp() {
-    let name = prompt("Enter your Fullname:").trim();
+    let name = prompt("Enter your full name:").trim();
+    if (
+        !/^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/.test(name) ||
+        name.replace(/\s/g, "").length < 5
+    ) {
+        alert("Invalid name!");
+        return;
+    }
+
     let email = prompt("Enter your email:").trim().toLowerCase();
-    let password = prompt("Enter your Password:").trim();
-
-    if (!name || !email || !password) {
-        alert("All field are required!");
+    if (
+        email.includes(" ") ||
+        email.length < 10 ||
+        email.split("@").length !== 2 ||
+        users.find(u => u.email === email)
+    ) {
+        alert("Invalid or existing email!");
         return;
     }
-    if (users.find(u => u.email === email)) {
-        alert("Email already exists!");
+
+    let age = prompt("Enter your age:").trim();
+    if (!/^\d{1,2}$/.test(age)) {
+        alert("Invalid age!");
         return;
     }
 
-    users.push({ name, email, password, balance: 0 });
+    let password = prompt("Enter password:").trim();
+    if (
+        password.length < 7 ||
+        password.includes(" ") ||
+        !/[@#\-+*\/]/.test(password)
+    ) {
+        alert("Weak password!");
+        return;
+    }
+
+    let confirm = prompt("Confirm password:");
+    if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    users.push(new User(name, email, age, password));
     alert("Account created successfully!");
 }
+
 function logIn() {
     let email = prompt("Enter your Email:").trim().toLowerCase();
     let user = users.find(u => u.email === email);
