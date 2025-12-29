@@ -121,3 +121,26 @@ function logIn() {
     alert(`Welcome ${user.name}! Lbalance dyalek: ${user.balance} dirhams`);
     menuUser(user);
 }
+function menuUser(user) {
+    while (true) {
+        let action = prompt("Chno bghiti: deposit (sddad), withdraw (tsarf), logout (khroj)?").toLowerCase();
+
+        if (action === "logout") break;
+
+        if (action === "deposit") {
+            let amount = parseFloat(prompt("Ch7al bghiti tsddad?"));
+            if (amount > 0) { 
+                user.balance += amount; 
+                alert(`Sddadti ${amount}. Balance: ${user.balance}`); 
+            } else alert("Mab9ach mzyan!");
+        } 
+        else if (action === "withdraw") {
+            let amount = parseFloat(prompt("Ch7al bghiti tsarf?"));
+            if (amount > 0 && amount <= user.balance) { 
+                user.balance -= amount; 
+                alert(`Tsraft ${amount}. Balance: ${user.balance}`); 
+            } else alert("Mab9ach mzyan!");
+        } 
+        else alert("Ikhtiyar ghalat!");
+    }
+}
