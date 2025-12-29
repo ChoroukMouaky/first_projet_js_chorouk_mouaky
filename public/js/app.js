@@ -90,7 +90,7 @@ class User {
         this.investment = 0;
     }
 }
-let users = []; // array khawi bach nstokiw fih lusers
+let users = []; 
 
 function Bank() {
     while (true) {
@@ -99,8 +99,8 @@ function Bank() {
 
         if (choice === "sign up") signUp();
         else if (choice === "log in") logIn();
-        else alert("wrooooooooong");
-
+        else if (choice === "change password") changePassword();
+        else alert("Wrong choice!");
     }
 }
 function signUp() {
