@@ -93,3 +93,20 @@ function Bank() {
 
     }
 }
+function signUp() {
+    let name = prompt("Enter your Fullname:").trim();
+    let email = prompt("Enter your email:").trim().toLowerCase();
+    let password = prompt("Enter your Password:").trim();
+
+    if (!name || !email || !password) {
+        alert("All field are required!");
+        return;
+    }
+    if (users.find(u => u.email === email)) {
+        alert("Email already exists!");
+        return;
+    }
+
+    users.push({ name, email, password, balance: 0 });
+    alert("Account created successfully!");
+}
