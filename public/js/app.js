@@ -79,7 +79,17 @@
 
 
 //todo:--------------------------------------------------------------------------------------------------------------------------------------------------------
-
+class User {
+    constructor(name, email, age, password) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.password = password;
+        this.balance = 0;
+        this.loan = 0;
+        this.investment = 0;
+    }
+}
 let users = []; // array khawi bach nstokiw fih lusers
 
 function Bank() {
