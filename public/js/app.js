@@ -225,3 +225,22 @@ function menuUser(user) {
         else alert("Wrong choice!");
     }
 }
+function changePassword() {
+    let email = prompt("Enter your email:").trim().toLowerCase();
+    let user = users.find(u => u.email === email);
+
+    if (!user) {
+        alert("Email not found!");
+        return;
+    }
+
+    let newPassword = prompt("Enter new password:").trim();
+    let confirm = prompt("Confirm new password:");
+
+    if (newPassword !== confirm) {
+        alert("Passwords do not match!");
+        return;
+    }
+    user.password = newPassword;
+    alert("Password updated!");
+}
