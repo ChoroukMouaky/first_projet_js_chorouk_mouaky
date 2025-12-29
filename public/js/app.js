@@ -181,24 +181,47 @@ function logIn() {
 }
 function menuUser(user) {
     while (true) {
-        let action = prompt("Chno bghiti: deposit (sddad), withdraw (tsarf), logout (khroj)?").toLowerCase();
+        let action = prompt(
+            "Choose: deposit, withdraw, loan, invest, logout"
+        ).toLowerCase();
 
         if (action === "logout") break;
 
         if (action === "deposit") {
-            let amount = parseFloat(prompt("Ch7al bghiti tsddad?"));
-            if (amount > 0) { 
-                user.balance += amount; 
-                alert(`Sddadti ${amount}. Balance: ${user.balance}`); 
-            } else alert("Mab9ach mzyan!");
-        } 
+            let amount = parseFloat(prompt("Deposit amount (max 1000):"));
+            if (amount > 0 && amount <= 1000) {
+                user.balance += amount;
+                alert(`New balance: ${user.balance}`);
+            } else alert("Invalid amount!");
+        }
+
         else if (action === "withdraw") {
-            let amount = parseFloat(prompt("Ch7al bghiti tsarf?"));
-            if (amount > 0 && amount <= user.balance) { 
-                user.balance -= amount; 
-                alert(`Tsraft ${amount}. Balance: ${user.balance}`); 
-            } else alert("Mab9ach mzyan!");
-        } 
-        else alert("Ikhtiyar ghalat!");
+            let amount = parseFloat(prompt("Withdraw amount:"));
+            if (amount > 0 && amount <= user.balance) {
+                user.balance -= amount;
+                alert(`New balance: ${user.balance}`);
+            } else alert("Invalid amount!");
+        }
+
+        else if (action === "loan") {
+            let maxLoan = user.balance * 0.2;
+            let amount = parseFloat(prompt(`Max loan: ${maxLoan}`));
+            if (amount > 0 && amount <= maxLoan) {
+                user.balance += amount;
+                user.loan += amount;
+                alert("Loan accepted!");
+            } else alert("Invalid loan!");
+        }
+
+        else if (action === "invest") {
+            let amount = parseFloat(prompt("Investment amount:"));
+            if (amount > 0 && amount <= user.balance) {
+                user.balance -= amount;
+                user.investment += amount;
+                alert("Investment successful!");
+            } else alert("Invalid amount!");
+        }
+
+        else alert("Wrong choice!");
     }
 }
