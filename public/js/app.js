@@ -110,3 +110,14 @@ function signUp() {
     users.push({ name, email, password, balance: 0 });
     alert("Account created successfully!");
 }
+function logIn() {
+    let email = prompt("Enter your Email:").trim().toLowerCase();
+    let user = users.find(u => u.email === email);
+    if (!user) { alert("Email not found!"); return; }
+
+    let password = prompt("Enter password:").trim();
+    if (user.password !== password) { alert("Wrong password!"); return; }
+
+    alert(`Welcome ${user.name}! Lbalance dyalek: ${user.balance} dirhams`);
+    menuUser(user);
+}
