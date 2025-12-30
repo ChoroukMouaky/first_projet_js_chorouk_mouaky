@@ -79,7 +79,7 @@
 
 
 //todo:--------------------------------------------------------------------------------------------------------------------------------------------------------
-//? mohim had chi rah cheb3aaaaaaaaaaaaaaan AI bach mankhelich dek chi khawi tanmchi ldaar w ankhdem 3la khatri w nfhem 
+ 
 class User {
     constructor(name, email, age, password) {
         this.name = name;
